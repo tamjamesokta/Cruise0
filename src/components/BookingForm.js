@@ -1,53 +1,33 @@
-// src/components/BookingForm.js
-
 import React, { useState } from 'react';
+import './BookingForm.css';
 
 const BookingForm = () => {
-  const [selectedCruise, setSelectedCruise] = useState('');
-  const [bookingDetails, setBookingDetails] = useState({
-    name: '',
-    email: '',
-  });
+  const [destination, setDestination] = useState('');
+  const [date, setDate] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log('Booking Details:', bookingDetails);
-    console.log('Selected Cruise:', selectedCruise);
-    alert('Booking Successful!');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Booking for ${destination} on ${date}`);
   };
 
   return (
-    <div>
-      <h3>Select Your Cruise</h3>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={bookingDetails.name}
-            onChange={(e) => setBookingDetails({ ...bookingDetails, name: e.target.value })}
-            required
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={bookingDetails.email}
-            onChange={(e) => setBookingDetails({ ...bookingDetails, email: e.target.value })}
-            required
-          />
-        </label>
-        <label>
-          Choose Cruise:
-          <select value={selectedCruise} onChange={(e) => setSelectedCruise(e.target.value)} required>
-            <option value="">Select a Cruise</option>
-            <option value="Caribbean Cruise">Caribbean Cruise</option>
-            <option value="Mediterranean Cruise">Mediterranean Cruise</option>
-            <option value="Alaskan Cruise">Alaskan Cruise</option>
-          </select>
-        </label>
-        <button type="submit">Book Now</button>
+    <div className="booking-container">
+      <h2>Book Your Cruise</h2>
+      <form onSubmit={handleSubmit} className="booking-form">
+        <label>Destination:</label>
+        <input 
+          type="text" 
+          value={destination} 
+          onChange={(e) => setDestination(e.target.value)} 
+          placeholder="Enter destination" 
+        />
+        <label>Date:</label>
+        <input 
+          type="date" 
+          value={date} 
+          onChange={(e) => setDate(e.target.value)} 
+        />
+        <button type="submit" className="btn-book">Book Now</button>
       </form>
     </div>
   );

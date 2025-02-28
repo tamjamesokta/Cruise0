@@ -1,28 +1,28 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
+import logo from '../images/cruiselogo.jpg'; // Import your logo image
+import './Navbar.css';
 
 const Navbar = () => {
-  const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
   return (
-    <nav>
-      <h1>Cruise Booking</h1>
-      <ul>
+    <nav className="navbar">
+      <div className="navbar-left">
+        <img src={logo} alt="Cruise Booker Logo" className="navbar-logo" />
+        <h1>Cruise0</h1>
+      </div>
+      <div className="navbar-right">
         {!isAuthenticated ? (
-          <li>
-            <button onClick={() => loginWithRedirect()}>Log In</button>
-          </li>
+          <button onClick={() => loginWithRedirect()} className="btn-login">
+            Login
+          </button>
         ) : (
-          <>
-            <li>
-              <span>Welcome, {user.name}</span>
-            </li>
-            <li>
-              <button onClick={() => logout({ returnTo: window.location.origin })}>Log Out</button>
-            </li>
-          </>
+          <button onClick={() => logout({ returnTo: window.location.origin })} className="btn-logout">
+            Logout
+          </button>
         )}
-      </ul>
+      </div>
     </nav>
   );
 };
