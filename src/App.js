@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import BookingForm from './components/BookingForm';
-import PrivateRoute from './components/PrivateRoute';
+// import PrivateRoute from './components/PrivateRoute';
 import Carousel from './components/Carousel';
 import Destinations from './components/Destinations';
 import BottomNav from './components/BottomNav';
@@ -24,34 +24,19 @@ const App = () => {
           element={
             <div className="home-container">
               <div className="welcome-section">
-                <h2>Welcome to Cruise Booking!</h2>
-                <p>Your journey begins here. Book your dream cruise today!</p>
+              
+                <Carousel />
               </div>
-              <Carousel />
+             
               
             </div>
           } 
         />
-
-        {/* Booking Route (Protected) */}
-        {/* <Route 
-          path="/book" 
-          element={
-            <PrivateRoute>
-              <div className="booking-section">
-                <h2>Book Your Cruise</h2>
-                <BookingForm />
-              </div>
-            </PrivateRoute>
-          } 
-        /> */}
-
-
       </Routes>
 
       <BookingForm />
 
-      {/* Recommended Destinations Section (Always visible) */}
+     
       <Destinations />
       
       {/* Bottom Navbar Section (Always visible) */}

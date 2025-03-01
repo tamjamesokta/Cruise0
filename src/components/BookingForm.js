@@ -11,6 +11,7 @@ const BookingForm = () => {
   };
 
   return (
+    <div className="booking-wrapper">
     <div className="booking-container">
       <h2>Book Your Cruise</h2>
       <form onSubmit={handleSubmit} className="booking-form">
@@ -30,7 +31,8 @@ const BookingForm = () => {
         <button type="submit" className="btn-book">Book Now</button>
       </form>
     </div>
-  );
+  </div>
+);
 };
 
 export default BookingForm;

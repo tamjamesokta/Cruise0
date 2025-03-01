@@ -1,32 +1,69 @@
 .booking-container {
-    padding: 50px 0;
-    text-align: center;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.booking-wrapper {
+  background-color: #e0e0e0; /* Light grey */
+  padding: 40px 0; /* Add some padding to the top and bottom */
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.booking-form input {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.btn-book {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin-top: 20px;
+}
+
+.btn-book:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 200px) {
+  /* Centering the booking container */
+  .booking-wrapper {
+    display: flex;
+    justify-content: center; /* Centers the booking container horizontally */
+    align-items: center; /* Centers the booking container vertically */
+    height: 100vh; /* Make sure it takes the full height */
   }
-  
-  .booking-form {
-    display: inline-block;
-    text-align: left;
-    margin-top: 20px;
+
+  .booking-container {
+    width: 90%; /* You can set a max width for mobile */
+    margin: 0 auto;
+    padding: 15px;
   }
-  
-  .booking-form input {
-    padding: 10px;
-    margin: 10px 0;
-    width: 200px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+
+  /* Button takes full width on mobile */
+  .btn-book {
+    width: 100%;
   }
-  
-  .booking-form button {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .booking-form button:hover {
-    background-color: #0056b3;
-  }
-  
+}

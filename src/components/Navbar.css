@@ -1,38 +1,85 @@
+/* General navbar styling */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    background-color: #fff;
-    border-bottom: 2px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  border-bottom: 2px solid #ddd;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  width: 85px; /* Smaller logo size */
+  height: auto;
+  margin-right: 10px;
+}
+
+.navbar-left h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-right .btn-login, .btn-logout {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-right .btn-login:hover, .btn-logout:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row; /* Keep navbar items in a row */
+    align-items: center; /* Ensure they are vertically centered */
+    justify-content: space-between; /* Distribute space between elements */
   }
-  
+
+  /* Align the navbar-left items to the left */
   .navbar-left {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
+    width: 50%; /* Ensure the logo and title take up 50% of the space */
   }
-  
-  .navbar-left h1 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-left: 10px; /* Space between logo and text */
+
+  /* Navbar right (login button) */
+  .navbar-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 50%; /* Ensure the login button takes the other 50% */
   }
-  
+
   .navbar-logo {
-    width: 85px; /* Set the width of the logo */
-    height: auto; /* Keep the aspect ratio of the logo */
+    width: 85px; /* Adjust logo size for mobile */
   }
-  
-  .navbar-right .btn-login, .btn-logout {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
+
+  .navbar-left h1 {
+    font-size: 20px;
+    margin-left: 10px;
   }
-  
-  .navbar-right .btn-login:hover, .btn-logout:hover {
-    background-color: #0056b3;
+
+  .navbar-right {
+    justify-content: flex-end;
   }
-  
+}

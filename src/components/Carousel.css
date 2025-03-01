@@ -1,60 +1,99 @@
-/* src/App.css */
-
-/* Carousel container */
+/* General Carousel Styling */
 .carousel-container {
-    position: relative; /* Ensures text is positioned on top */
-    width: 100%;
-    height: 400px; /* Set height for the carousel */
-    max-width: 100%;
-    margin: 0 auto;
-    overflow: hidden; /* Prevents any overflow from the images */
-  }
-  
-  /* Carousel images styling */
-  .carousel-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure images cover the entire container */
-    border-radius: 10px; /* Optional: rounds the image corners */
-  }
-  
-  /* Overlay Text and Button */
-  .carousel-text {
-    position: absolute; /* Position text absolutely within the container */
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjusts to truly center the text */
-    color: white; /* White text color */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Makes text more readable */
-    text-align: center; /* Centers the text inside the div */
-    z-index: 10; /* Ensures the text is above the images */
-  }
-  
-  /* Heading Styling */
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; /* Ensures no content spills over */
+  margin: 0 auto; /* Centers the carousel container */
+}
+
+/* Slider Images */
+.carousel-container .slick-slide img {
+  width: 100%;
+  height: 400px; /* Ensures all images are the same size */
+  object-fit: cover; /* Ensures images cover the area without distortion */
+  display: block; /* Ensures images fill the slide properly */
+}
+
+/* Overlay Text & Button */
+.carousel-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  z-index: 10; /* Makes sure the text is above the carousel images */
+  width: 100%;
+  padding: 10px;
+}
+
+.carousel-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.carousel-text p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.btn-start {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-start:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Dots Styling */
+.slick-dots {
+  bottom: 20px; /* Adjusts position of dots */
+}
+
+.slick-dots li button:before {
+  color: white; /* Changes dot color to white */
+  font-size: 18px;
+}
+
+/* Remove text inside previous and next arrows but keep the arrows visible */
+.slick-prev::before, .slick-next::before {
+  content: ''; /* Removes the text inside arrows */
+  font-size: 30px; /* Ensures the arrows remain visible */
+  color: white; /* Make sure arrows are visible */
+}
+
+/* Navigation arrows - Custom style */
+.slick-prev {
+  left: 10px;
+  z-index: 1;
+}
+
+.slick-next {
+  right: 10px;
+  z-index: 1;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
   .carousel-text h2 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 1.8rem; /* Adjusts title font size for mobile */
   }
-  
-  /* Paragraph Styling */
+
   .carousel-text p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
+    font-size: 1rem; /* Adjusts paragraph font size for mobile */
   }
-  
-  /* Button Styling */
-  .carousel-text .btn-start {
-    background-color: #007bff; /* Blue background */
-    color: white;
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+  .btn-start {
+    width: 100%; /* Makes button full width on mobile */
+    padding: 15px; /* Increases padding for easier clicking */
+    font-size: 1rem; /* Increases font size for mobile */
   }
-  
-  /* Button Hover Styling */
-  .carousel-text .btn-start:hover {
-    background-color: #0056b3; /* Darker blue on hover */
-  }
-  
+}
