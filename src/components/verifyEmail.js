@@ -11,8 +11,7 @@ const VerifyEmail = () => {
   const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN; // Use environment variable for Auth0 domain
 
   useEffect(() => {
-    // if (!isAuthenticated) {
-    //   // If the user is not authenticated, redirect to the login page
+    // if (isAuthenticated) {
     //   logout({ returnTo: window.location.origin });
     //   return;
     // }

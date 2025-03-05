@@ -12,29 +12,53 @@ import './App.css'; // Global Styles
 import { useAuth0 } from '@auth0/auth0-react';
 
 const App = () => {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  const navigate = useNavigate(); // For redirecting
-  const location = useLocation(); // To track the current location (page) of the user
+  const { user, isAuthenticated, isLoading, logout } = useAuth0();
+  const navigate = useNavigate(); 
+  const location = useLocation(); 
+  console.log(location);
 
   useEffect(() => {
-    // Wait until user data is loaded
     if (isLoading) return;
 
-    // If the user is authenticated and their email is not verified
-    if (user) {
-      if (!user.email_verified) {
-        // If the email is not verified, and the user is not on the /verify-email page
-        if (location.pathname !== '/verify-email') {
-          navigate('/verify-email');  // Redirect to the verify-email page
+    if (user && !user.email_verified && logout &&(!location === '/' )) {
+        navigate('/');
+
+        if (user && user.email_verified && isAuthenticated){
+          navigate('/');
         }
-      } else {
-        // If the email is verified and the user is not on the home page
-        if (location.pathname === '/verify-email') {
-          navigate('/'); // Redirect to the home page after email verification
+
+        if(user && !user.email_verified){
+          navigate('verify-email');
         }
-      }
-    }
-  }, [isAuthenticated, user, isLoading, navigate, location]);
+
+      
+       
+    } 
+
+   
+
+
+    
+    // if (user && !user.email_verified) {
+    //   if (location.pathname !== '/verify-email') {
+    //     navigate('/verify-email');
+    //   }
+    // } 
+    // // If the email is verified, proceed to the main page
+    // else if (user && user.email_verified) {
+    //   if (location.pathname === '/verify-email') {
+    //     navigate('/'); // Redirect to the home page if the user tries to access /verify-email
+    //   }
+    // } 
+    // // If the user is not authenticated (logged out), redirect to /verify-email page
+    // else if (!isAuthenticated) {
+    //   if (location.pathname !== '/verify-email') {
+    //     navigate('/verify-email');
+    //   }
+    // }
+
+  }, [isAuthenticated, user, isLoading, navigate, location, logout]);
+
 
   return (
     <>
