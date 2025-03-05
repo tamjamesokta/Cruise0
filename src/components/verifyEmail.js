@@ -11,10 +11,7 @@ const VerifyEmail = () => {
   const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN; // Use environment variable for Auth0 domain
 
   useEffect(() => {
-    if (!user) {
-      navigate('/'); // If user is not authenticated, redirect to home
-      return;
-    }
+   
 
     if (user.email_verified) {
       navigate('/'); // If email is already verified, redirect to home

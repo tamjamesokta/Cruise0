@@ -17,10 +17,8 @@ const App = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Wait until the user data is loaded
     if (isLoading) return;
-
-    // If the user is authenticated but email is not verified, navigate to the verification page
+    
     if (user && !user.email_verified) {
       if (location.pathname !== '/verify-email') {
         navigate('/verify-email');
@@ -33,7 +31,6 @@ const App = () => {
 
   return (
     <>
-      {/* Only render Navbar, BookingForm, Destinations, and BottomNav if we're not on the /verify-email page */}
       {location.pathname !== '/verify-email' && (
         <>
           <Navbar />
