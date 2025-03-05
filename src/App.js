@@ -12,7 +12,7 @@ import './App.css'; // Global Styles
 import { useAuth0 } from '@auth0/auth0-react';
 
 const App = () => {
-  const { user, isAuthenticated, isLoading, logout } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate(); // For redirecting
   const location = useLocation(); // To track the current location (page) of the user
 
@@ -51,6 +51,16 @@ const App = () => {
 
       {/* Main Content Sections */}
       <Routes>
+        <Route 
+          path="/" 
+          element={
+            <div className="home-container">
+              <div className="welcome-section">
+                <Carousel />
+              </div>
+            </div>
+          } 
+        />
         <Route path="/verify-email" element={<VerifyEmail />} />  {/* This is the standalone verify email page */}
       </Routes>
     </>

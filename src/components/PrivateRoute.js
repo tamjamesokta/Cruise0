@@ -11,9 +11,13 @@ const PrivateRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  if (!isAuthenticated) {
-    return <Navigate to="/" />;
-  }
+  // if (!isAuthenticated) {
+  //   return <Navigate to="/login" />;
+  // }
+
+  // if (user && !user.email_verified) {
+  //   return <Navigate to="/verify-email" />;
+  // }
 
   return children;
 };
