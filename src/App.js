@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import BookingForm from './components/BookingForm';
 import Carousel from './components/Carousel';
@@ -14,6 +14,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 const App = () => {
   const { user, isAuthenticated, isLoading, logout } = useAuth0();
   const navigate = useNavigate(); // For redirecting
+  const location = useLocation(); // To track the current location (page) of the user
 
   useEffect(() => {
     // Wait until user data is loaded
@@ -21,12 +22,16 @@ const App = () => {
 
     // If the user is authenticated, check their email verification status
     if (user) {
+      // If email is not verified and the user is not on the /verify-email page, navigate there
       if (!user.email_verified) {
-        // If email is not verified, redirect to the email verification waiting page
-        navigate('/verify-email');
+        if (location.pathname !== '/verify-email') {
+          navigate('/verify-email');
+        }
       } else {
-        // If email is verified, you can proceed to the home page or desired page
-        navigate('/');
+        // If email is verified and the user is not on the home page, navigate to the home page
+        if (location.pathname !== '/') {
+          navigate('/');
+        }
       }
     }
 
@@ -35,7 +40,7 @@ const App = () => {
       // Logout and navigate back to the home page or login page
       logout({ returnTo: window.location.origin });
     }
-  }, [isAuthenticated, user, isLoading, navigate, logout]);
+  }, [isAuthenticated, user, isLoading, navigate, logout, location]);
 
   return (
     <>
