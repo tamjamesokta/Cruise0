@@ -17,26 +17,21 @@ const App = () => {
   const location = useLocation(); // To track the current location (page) of the user
 
   useEffect(() => {
-    // If loading, exit early
+    // Wait until user data is loaded
     if (isLoading) return;
 
-    // If the user is authenticated, check their email verification status
+    // If the user is authenticated and their email is not verified
     if (user) {
       if (!user.email_verified) {
-        // If email is not verified and we're not on the /verify-email page, navigate there
+        // If the email is not verified, and the user is not on the /verify-email page
         if (location.pathname !== '/verify-email') {
-          navigate('/verify-email');
+          navigate('/verify-email');  // Redirect to the verify-email page
         }
       } else {
-        // If email is verified, navigate to the home page or another page
+        // If the email is verified and the user is not on the home page
         if (location.pathname !== '/') {
-          navigate('/');
+          navigate('/'); // Redirect to the home page after email verification
         }
-      }
-    } else {
-      // If not authenticated, logout and navigate to the login page (or home page)
-      if (location.pathname !== '/') {
-        logout({ returnTo: window.location.origin });
       }
     }
   }, [isAuthenticated, user, isLoading, navigate, logout, location]);

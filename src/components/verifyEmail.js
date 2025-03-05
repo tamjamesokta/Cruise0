@@ -8,6 +8,8 @@ const VerifyEmail = () => {
   const [emailVerified, setEmailVerified] = useState(false); // Track email verification
   const [isPolling, setIsPolling] = useState(true); // To track if polling is active
 
+  const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN; // Use environment variable for Auth0 domain
+
   useEffect(() => {
     if (!isAuthenticated) {
       // If the user is not authenticated, redirect to the login page
@@ -21,7 +23,7 @@ const VerifyEmail = () => {
         try {
           const token = await getAccessTokenSilently();
           const response = await fetch(
-            `https://YOUR_AUTH0_DOMAIN/api/v2/users/${user.sub}`,
+            `${auth0Domain}/api/v2/users/${user.sub}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -50,7 +52,7 @@ const VerifyEmail = () => {
         setIsPolling(false); // Stop polling when component unmounts or email is verified
       };
     }
-  }, [isAuthenticated, user, navigate, getAccessTokenSilently, isPolling, logout]);
+  }, [isAuthenticated, user, navigate, getAccessTokenSilently, isPolling, logout, auth0Domain]);
 
   return (
     <div>
