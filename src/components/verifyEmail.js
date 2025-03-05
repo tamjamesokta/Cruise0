@@ -11,12 +11,11 @@ const VerifyEmail = () => {
   const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN; // Use environment variable for Auth0 domain
 
   useEffect(() => {
-    // if (isAuthenticated) {
-    //   logout({ returnTo: window.location.origin });
-    //   return;
-    // }
 
-    // Poll for email verification
+    if (user && user.email_verified) {
+          navigate('/');
+      } 
+   
     const checkEmailVerification = async () => {
       if (user && !user.email_verified) {
         try {

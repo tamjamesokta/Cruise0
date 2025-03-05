@@ -20,42 +20,7 @@ const App = () => {
   useEffect(() => {
     if (isLoading) return;
 
-    if (user && !user.email_verified && logout &&(!location === '/' )) {
-        navigate('/');
-
-        if (user && user.email_verified && isAuthenticated){
-          navigate('/');
-        }
-
-        if(user && !user.email_verified){
-          navigate('verify-email');
-        }
-
-      
-       
-    } 
-
-   
-
-
-    
-    // if (user && !user.email_verified) {
-    //   if (location.pathname !== '/verify-email') {
-    //     navigate('/verify-email');
-    //   }
-    // } 
-    // // If the email is verified, proceed to the main page
-    // else if (user && user.email_verified) {
-    //   if (location.pathname === '/verify-email') {
-    //     navigate('/'); // Redirect to the home page if the user tries to access /verify-email
-    //   }
-    // } 
-    // // If the user is not authenticated (logged out), redirect to /verify-email page
-    // else if (!isAuthenticated) {
-    //   if (location.pathname !== '/verify-email') {
-    //     navigate('/verify-email');
-    //   }
-    // }
+  
 
   }, [isAuthenticated, user, isLoading, navigate, location, logout]);
 
