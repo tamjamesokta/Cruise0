@@ -29,38 +29,30 @@ const App = () => {
         }
       } else {
         // If the email is verified and the user is not on the home page
-        if (location.pathname !== '/') {
+        if (location.pathname === '/verify-email') {
           navigate('/'); // Redirect to the home page after email verification
         }
       }
     }
-  }, [isAuthenticated, user, isLoading, navigate, logout, location]);
+  }, [isAuthenticated, user, isLoading, navigate, location]);
 
   return (
     <>
-      {/* Navbar at the top */}
-      <Navbar />
+      {/* Only render Navbar, BookingForm, Destinations, and BottomNav if we're not on the /verify-email page */}
+      {location.pathname !== '/verify-email' && (
+        <>
+          <Navbar />
+          <Carousel />
+          <BookingForm />
+          <Destinations />
+          <BottomNav />
+        </>
+      )}
 
       {/* Main Content Sections */}
       <Routes>
-        <Route 
-          path="/" 
-          element={
-            <div className="home-container">
-              <div className="welcome-section">
-                <Carousel />
-              </div>
-            </div>
-          } 
-        />
-        <Route path="/verify-email" element={<VerifyEmail />} />  {/* Add this route */}
+        <Route path="/verify-email" element={<VerifyEmail />} />  {/* This is the standalone verify email page */}
       </Routes>
-
-      <BookingForm />
-      <Destinations />
-      
-      {/* Bottom Navbar Section (Always visible) */}
-      <BottomNav />
     </>
   );
 };
