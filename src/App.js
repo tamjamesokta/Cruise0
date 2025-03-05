@@ -12,18 +12,24 @@ import './App.css'; // Global Styles
 import { useAuth0 } from '@auth0/auth0-react';
 
 const App = () => {
-  const { user, isAuthenticated, isLoading, logout } = useAuth0();
-  const navigate = useNavigate(); 
-  const location = useLocation(); 
-  console.log(location);
+  const { user, isAuthenticated, isLoading } = useAuth0();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    // Wait until the user data is loaded
     if (isLoading) return;
 
-  
-
-  }, [isAuthenticated, user, isLoading, navigate, location, logout]);
-
+    // If the user is authenticated but email is not verified, navigate to the verification page
+    if (user && !user.email_verified) {
+      if (location.pathname !== '/verify-email') {
+        navigate('/verify-email');
+      }
+    } else if (user && user.email_verified && location.pathname === '/verify-email') {
+      // If the email is verified and we're on the verification page, redirect to home
+      navigate('/');
+    }
+  }, [isAuthenticated, user, isLoading, navigate, location]);
 
   return (
     <>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 const VerifyEmail = () => {
-  const { user, isAuthenticated, getAccessTokenSilently, logout } = useAuth0();
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0();
   const navigate = useNavigate();
   const [emailVerified, setEmailVerified] = useState(false); // Track email verification
   const [isPolling, setIsPolling] = useState(true); // To track if polling is active
@@ -11,11 +11,16 @@ const VerifyEmail = () => {
   const auth0Domain = process.env.REACT_APP_AUTH0_DOMAIN; // Use environment variable for Auth0 domain
 
   useEffect(() => {
+    if (!user) {
+      navigate('/'); // If user is not authenticated, redirect to home
+      return;
+    }
 
-    if (user && user.email_verified) {
-          navigate('/');
-      } 
-   
+    if (user.email_verified) {
+      navigate('/'); // If email is already verified, redirect to home
+      return;
+    }
+
     const checkEmailVerification = async () => {
       if (user && !user.email_verified) {
         try {
@@ -50,7 +55,7 @@ const VerifyEmail = () => {
         setIsPolling(false); // Stop polling when component unmounts or email is verified
       };
     }
-  }, [isAuthenticated, user, navigate, getAccessTokenSilently, isPolling, logout, auth0Domain]);
+  }, [user, isAuthenticated, navigate, getAccessTokenSilently, isPolling, auth0Domain]);
 
   return (
     <div>
