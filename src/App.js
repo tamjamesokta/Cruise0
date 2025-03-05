@@ -19,10 +19,21 @@ const App = () => {
     // Wait until user data is loaded
     if (isLoading) return;
 
-    // If the user is authenticated but their email is not verified, log them out
-    if (isAuthenticated && user && !user.email_verified) {
-      logout({ returnTo: window.location.origin }); // Logs the user out and redirects them to the home page or login page
-      navigate('/verify-email');
+    // If the user is authenticated, check their email verification status
+    if (user) {
+      if (!user.email_verified) {
+        // If email is not verified, redirect to the email verification waiting page
+        navigate('/verify-email');
+      } else {
+        // If email is verified, you can proceed to the home page or desired page
+        navigate('/');
+      }
+    }
+
+    // Handle logout scenario if the user is authenticated but refreshes
+    if (!isAuthenticated) {
+      // Logout and navigate back to the home page or login page
+      logout({ returnTo: window.location.origin });
     }
   }, [isAuthenticated, user, isLoading, navigate, logout]);
 

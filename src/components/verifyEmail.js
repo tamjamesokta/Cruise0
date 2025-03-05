@@ -22,7 +22,7 @@ const VerifyEmail = () => {
           // Poll for the updated user information
           const token = await getAccessTokenSilently();
           const response = await fetch(
-            `https://james-test-43934.cic-demo-platform.auth0app.com/api/v2/users/${user.sub}`,
+            `https://YOUR_AUTH0_DOMAIN/api/v2/users/${user.sub}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
