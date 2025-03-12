@@ -21,13 +21,18 @@ root.render(
       redirect_uri: redirectUri,
     }}
     onRedirectCallback={(appState) => {
-      const navigate = useNavigate(); // Initialize navigate
-
-      const { isAuthenticated, user } = useAuth0();
-
-      if (isAuthenticated && user && !user.email_verified) {
-        navigate('/Verify');
+      const { isAuthenticated, user } = useAuth0();  // Get user data after authentication
+  
+      if (isAuthenticated && user) {
+        if (user.email_verified) {
+          // Redirect to the dashboard if the email is verified
+          navigate('/');
+        } else {
+          // Redirect to email verification page if the email is not verified
+          navigate('/Verify');
+        }
       } else {
+        // If not authenticated, redirect to login
         navigate('/');
       }
     }}
