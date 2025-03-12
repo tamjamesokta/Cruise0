@@ -29,8 +29,8 @@ const App = () => {
         } />
         
         
-        {/* <Route path="/Verify" element={<PrivateRoute><Verify /></PrivateRoute>} /> */}
-        <Route path="/Verify" element={<Verify />} />
+        <Route path="/Verify" element={<PrivateRoute><Verify /></PrivateRoute>} />
+        {/* <Route path="/Verify" element={<Verify />} /> */}
       </Routes>
     </Router>
   );

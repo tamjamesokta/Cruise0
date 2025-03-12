@@ -21,7 +21,8 @@ root.render(
       redirect_uri: redirectUri,
     }}
     onRedirectCallback={(appState) => {
-      const { isAuthenticated, user } = useAuth0();  // Get user data after authentication
+      const {isAuthenticated, user,} = useAuth0();  
+      const {navigate} = useNavigate();// Get user data after authentication
   
       if (isAuthenticated && user) {
         if (user.email_verified) {
@@ -33,7 +34,7 @@ root.render(
         }
       } else {
         // If not authenticated, redirect to login
-        navigate('/');
+        navigate('/login');
       }
     }}
   >
