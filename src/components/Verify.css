@@ -1,0 +1,84 @@
+.verify-page  {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.verify-page {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Login container */
+.verify-container {
+  width: 100%;
+  max-width: 400px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Header */
+.verify-header img {
+  width: 150px;
+  margin-bottom: -1rem;
+}
+
+/* Main content */
+.verify-main h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.verify-main p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.resend-link {
+  color: #007bff; /* Blue color for the link */
+  cursor: pointer; /* Makes it look clickable */
+  text-decoration: underline; /* Underlines the text to look like a link */
+}
+
+.resend-link:hover {
+  color: #0056b3; /* Darker blue when hovered */
+}
+
+
+
+
+
+.verify-button {
+  width: 50%;
+  padding: 10px;
+  background-color: #007bff; /* Blue button color */
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+}
+
+
+/* Footer */
+.verify-footer {
+  margin-top: 2rem;
+  font-size: 14px;
+  color: #888;
+}
+
+.-footer p {
+  margin-top: 2rem;
+}
